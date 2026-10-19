@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}{{ t('home.title') }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="hero-eyebrow">{{ t('home.eyebrow') }}</span>
+    <h1>{{ t('home.heading') }}</h1>
+    <p class="hero-sub">{{ t('home.sub') }}</p>
+</section>
+
+<section class="home-section">
+    <div class="section-head">
+        <h2>{{ t('home.features_title') }}</h2>
+    </div>
+    <div class="feature-grid">
+        <article class="feature-card">
+            <span class="feature-icon">✎</span>
+            <h3>{{ t('home.f1_title') }}</h3>
+            <p>{{ t('home.f1_desc') }}</p>
+        </article>
+        <article class="feature-card">
+            <span class="feature-icon">⚑</span>
+            <h3>{{ t('home.f2_title') }}</h3>
+            <p>{{ t('home.f2_desc') }}</p>
+        </article>
+        <article class="feature-card">
+            <span class="feature-icon">⏱</span>
+            <h3>{{ t('home.f3_title') }}</h3>
+            <p>{{ t('home.f3_desc') }}</p>
+        </article>
+        <article class="feature-card">
+            <span class="feature-icon">✓</span>
+            <h3>{{ t('home.f4_title') }}</h3>
+            <p>{{ t('home.f4_desc') }}</p>
+        </article>
+    </div>
+</section>
+
+<section class="home-section">
+    <div class="section-head">
+        <h2>{{ t('home.how_title') }}</h2>
+    </div>
+    <ol class="steps">
+        <li><span class="step-num">1</span> {{ t('home.s1') }}</li>
+        <li><span class="step-num">2</span> {{ t('home.s2') }}</li>
+        <li><span class="step-num">3</span> {{ t('home.s3') }}</li>
+    </ol>
+</section>
+
+<section class="cta-band">
+    <div>
+        <h2>{{ t('home.cta_title') }}</h2>
+        <p>{{ t('home.cta_sub') }}</p>
+    </div>
+    <a href="{{ url_for('tasks') }}" class="btn btn-primary">{{ t('home.cta_btn') }}</a>
+</section>
+{% endblock %}

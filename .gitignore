@@ -1,0 +1,30 @@
+# Ambiente virtual
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Banco de dados e anexos (gerados em tempo de execução)
+instance/
+uploads/
+*.db
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Logs
+*.log
+flask.log
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+*.Zone.Identifier
+*:Zone.Identifier
+.idea/
+.vscode/

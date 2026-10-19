@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}{{ t('tasks.title') }}{% endblock %}
+{% block breadcrumb %}
+<span class="crumb-sep">/</span>
+<span class="crumb current">{{ t('tasks.crumb') }}</span>
+{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <div>
+        <h1>{{ t('tasks.heading') }}</h1>
+        <p class="page-sub">{{ t('tasks.sub') }}</p>
+    </div>
+</section>
+<section class="stats">
+    <a href="{{ url_for('tasks', status='todas', priority=priority_filter, search=search, sort=sort) }}" class="stat-card stat-total">
+        <span class="stat-number">{{ total }}</span>
+        <span class="stat-label">{{ t('stat.total') }}</span>
+    </a>
+    <a href="{{ url_for('tasks', status='pendentes', priority=priority_filter, search=search, sort=sort) }}" class="stat-card stat-pending">
+        <span class="stat-number">{{ pending }}</span>
+        <span class="stat-label">{{ t('stat.pending') }}</span>
+    </a>
+    <a href="{{ url_for('tasks', status='concluidas', priority=priority_filter, search=search, sort=sort) }}" class="stat-card stat-done">
+        <span class="stat-number">{{ done }}</span>
+        <span class="stat-label">{{ t('stat.done') }}</span>
+    </a>
+    <a href="{{ url_for('tasks', status='atrasadas', priority=priority_filter, search=search, sort=sort) }}" class="stat-card stat-overdue">
+        <span class="stat-number">{{ overdue }}</span>
+        <span class="stat-label">{{ t('stat.overdue') }}</span>
+    </a>
+</section>
+
+<div class="toolbar">
+    <form class="search-form" method="GET" action="{{ url_for('tasks') }}">
+        <input type="text" name="search" placeholder="{{ t('search.placeholder') }}" value="{{ search }}" class="search-input">
+        <input type="hidden" name="status" value="{{ status_filter }}">
+        <input type="hidden" name="priority" value="{{ priority_filter }}">
+        <input type="hidden" name="sort" value="{{ sort }}">
+        <input type="hidden" name="tag" value="{{ tag_filter }}">
+        <button type="submit" class="btn btn-sm">{{ t('search.button') }}</button>
+        {% if search %}
+        <a href="{{ url_for('tasks', status=status_filter, priority=priority_filter, sort=sort, tag=tag_filter) }}" class="btn btn-sm btn-ghost">{{ t('search.clear') }}</a>
+        {% endif %}
+    </form>
+
+    <div class="filters">
+        <div class="filter-group">
+            <span class="filter-label">{{ t('filter.priority') }}</span>
+            <a href="{{ url_for('tasks', status=status_filter, priority='todas', search=search, sort=sort, tag=tag_filter) }}" class="filter-btn {{ 'active' if priority_filter == 'todas' }}">{{ t('filter.all') }}</a>
+            <a href="{{ url_for('tasks', status=status_filter, priority='alta', search=search, sort=sort, tag=tag_filter) }}" class="filter-btn {{ 'active' if priority_filter == 'alta' }}">{{ t('prio.high') }}</a>
+            <a href="{{ url_for('tasks', status=status_filter, priority='media', search=search, sort=sort, tag=tag_filter) }}" class="filter-btn {{ 'active' if priority_filter == 'media' }}">{{ t('prio.medium') }}</a>
+            <a href="{{ url_for('tasks', status=status_filter, priority='baixa', search=search, sort=sort, tag=tag_filter) }}" class="filter-btn {{ 'active' if priority_filter == 'baixa' }}">{{ t('prio.low') }}</a>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">{{ t('filter.sort') }}</span>
+            <a href="{{ url_for('tasks', status=status_filter, priority=priority_filter, search=search, sort='created_desc', tag=tag_filter) }}" class="filter-btn {{ 'active' if sort == 'created_desc' }}">{{ t('sort.recent') }}</a>
+            <a href="{{ url_for('tasks', status=status_filter, priority=priority_filter, search=search, sort='due_asc', tag=tag_filter) }}" class="filter-btn {{ 'active' if sort == 'due_asc' }}">{{ t('sort.due') }}</a>
+            <a href="{{ url_for('tasks', status=status_filter, priority=priority_filter, search=search, sort='priority_desc', tag=tag_filter) }}" class="filter-btn {{ 'active' if sort == 'priority_desc' }}">{{ t('sort.priority') }}</a>
+        </div>
+    </div>
+</div>
+
+{% if tasks %}
+<div class="task-list">
+    {% for task in tasks %}
+    <div class="task-card {{ 'task-done' if task.status == 'concluida' }} {{ 'task-overdue' if task.is_overdue }} {{ 'task-due-today' if task.is_due_today }}" style="--card-depth: {{ loop.index0 }};">
+        <div class="task-header">
+            <form method="POST" action="{{ url_for('toggle', task_id=task.id) }}" class="toggle-form">
+                <button type="submit" class="toggle-btn {{ 'checked' if task.status == 'concluida' }}">
+                    {{ '✓' if task.status == 'concluida' else '○' }}
+                </button>
+            </form>
+            <h3 class="task-title {{ 'title-done' if task.status == 'concluida' }}">{{ task.title }}</h3>
+            <span class="priority-badge priority-{{ task.priority }}">{{ t({'alta': 'prio.high', 'media': 'prio.medium', 'baixa': 'prio.low'}[task.priority]) }}</span>
+        </div>
+
+        {% if task.tags %}
+        <div class="task-tags">
+            {% for tag in task.tags %}
+            <a href="{{ url_for('tasks', tag=tag.name) }}" class="tag-chip">{{ tag.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if task.attachments %}
+        <div class="task-attachments">
+            {% for att in task.attachments %}
+            <a href="{{ url_for('uploaded_file', filename=att.stored_name) }}" target="_blank" class="attachment-link">{{ att.filename }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if task.description %}
+        <p class="task-description">{{ task.description }}</p>
+        {% endif %}
+
+        <div class="task-meta">
+            {% if task.due_date %}
+            <span class="due-date {{ 'overdue' if task.is_overdue }} {{ 'due-today' if task.is_due_today }}">
+                {{ task.due_date.strftime(date_format) }}
+                {% if task.is_overdue %}{{ t('task.overdue_tag') }}{% elif task.is_due_today %}{{ t('task.today_tag') }}{% endif %}
+            </span>
+            {% endif %}
+            <span class="created-at">{{ t('task.created') }} {{ task.created_at.strftime(date_format) }}</span>
+        </div>
+
+        <div class="task-actions">
+            <a href="{{ url_for('edit', task_id=task.id) }}" class="btn btn-sm btn-ghost">{{ t('task.edit') }}</a>
+            <form method="POST" action="{{ url_for('delete', task_id=task.id) }}" onsubmit="return confirm('{{ t('task.confirm_delete') }}')">
+                <button type="submit" class="btn btn-sm btn-danger">{{ t('task.delete') }}</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if pagination.pages > 1 %}
+<nav class="pagination" aria-label="pagination">
+    {% if pagination.has_prev %}
+    <a class="page-link" href="{{ url_for('tasks', page=pagination.prev_num, status=status_filter, priority=priority_filter, search=search, sort=sort, tag=tag_filter) }}">‹</a>
+    {% else %}
+    <span class="page-link disabled">‹</span>
+    {% endif %}
+
+    {% for p in pagination.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if p %}
+            {% if p == pagination.page %}
+            <span class="page-link active">{{ p }}</span>
+            {% else %}
+            <a class="page-link" href="{{ url_for('tasks', page=p, status=status_filter, priority=priority_filter, search=search, sort=sort, tag=tag_filter) }}">{{ p }}</a>
+            {% endif %}
+        {% else %}
+        <span class="page-link ellipsis">…</span>
+        {% endif %}
+    {% endfor %}
+    {% if pagination.has_next %}
+    <a class="page-link" href="{{ url_for('tasks', page=pagination.next_num, status=status_filter, priority=priority_filter, search=search, sort=sort, tag=tag_filter) }}">›</a>
+    {% else %}
+    <span class="page-link disabled">›</span>
+    {% endif %}
+</nav>
+{% endif %}
+{% else %}
+    <h3>{{ t('empty.title') }}</h3>
+    <p>{{ t('empty.sub') }}</p>
+</div>
+{% endif %}
+{% endblock %}

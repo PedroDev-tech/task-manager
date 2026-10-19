@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Apresentação</title>
+    <link rel="icon" type="image/svg+xml" href="static/logo-v2.svg?v=4">
+    <link rel="icon" type="image/png" sizes="64x64" href="static/favicon.png?v=4">
+    <link rel="alternate icon" type="image/png" sizes="32x32" href="static/logo-v2-favicon.png?v=4">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png?v=4">
+    <script>
+        (function () {
+            var saved = localStorage.getItem('slides-theme');
+            if (!saved) {
+                saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+    <style>
+        :root {
+            --r-background-color: #0a1619;
+            --r-main-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            --r-heading-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            --r-main-color: #e6f3f2;
+            --r-heading-color: #e6f3f2;
+            --r-link-color: #0ea5a4;
+
+            --surface: #112428;
+            --surface-soft: #0d1e21;
+            --border: #1f3b3f;
+            --text-muted: #8fabaa;
+            --primary: #0ea5a4;
+            --primary-soft: rgba(14, 165, 164, 0.14);
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+
+            --text: #e6f3f2;
+            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.22), transparent 62%), linear-gradient(160deg, #11303a, #0c2026);
+            --cover-bg: radial-gradient(ellipse at top, rgba(14,165,164,0.32), transparent 62%), linear-gradient(135deg, #1d4550, #0c2026);
+            --card-bg: #17363b;
+            --card-border: #2f5a60;
+            --card-text: #ffffff;
+            --card-muted: #b9dcdb;
+            --code-bg: #102e34;
+            --box-bg: rgba(14, 165, 164, 0.2);
+            --box-border: rgba(34, 211, 238, 0.55);
+            --glow: rgba(6, 182, 212, 0.12);
+        }
+
+        [data-theme="light"] {
+            --r-background-color: #eef4f5;
+            --r-main-color: #123539;
+            --r-heading-color: #0a6b73;
+            --r-link-color: #0b8b93;
+
+            --surface: #ffffff;
+            --surface-soft: #f1f8f9;
+            --border: #c4dcdf;
+            --text-muted: #527478;
+            --primary: #0b8b93;
+            --primary-soft: rgba(11, 139, 147, 0.12);
+            --accent: #0891b2;
+
+            --text: #123539;
+            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(8,145,178,0.16), transparent 60%), linear-gradient(160deg, #ffffff, #e7f2f3);
+            --cover-bg: radial-gradient(ellipse at top, rgba(8,145,178,0.22), transparent 62%), linear-gradient(135deg, #dff1f3, #f2f9fa);
+            --card-bg: #ffffff;
+            --card-border: #c4dcdf;
+            --card-text: #123539;
+            --card-muted: #527478;
+            --code-bg: #eef6f7;
+            --box-bg: rgba(8, 145, 178, 0.1);
+            --box-border: rgba(8, 145, 178, 0.35);
+            --glow: rgba(8, 145, 178, 0.18);
+        }
+
+        [data-theme="light"] .reveal h1 {
+            background: linear-gradient(135deg, #0a6b73, #0891b2, #0b8b93) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        [data-theme="light"] .badge-python { color: #1d4ed8; }
+        [data-theme="light"] .badge-flask { color: #047857; }
+        [data-theme="light"] .badge-sql { color: #b45309; }
+        [data-theme="light"] .badge-html { color: #b91c1c; }
+        [data-theme="light"] .badge-css { color: #0e7490; }
+        [data-theme="light"] .badge-i18n { color: #0e7490; }
+
+        .reveal { font-size: 34px; }
+        .reveal h1 { font-size: 2.2em; color: var(--primary); }
+        .reveal h2 { font-size: 1.5em; color: var(--primary); margin-bottom: 0.5em; }
+        .reveal h3 { font-size: 1.05em; color: var(--accent); }
+        .reveal p, .reveal li { font-size: 0.85em; line-height: 1.55; }
+        .reveal ul { list-style: none; padding-left: 0; }
+        .reveal ul li::before { content: "> "; color: var(--primary); font-weight: bold; }
+        .reveal ul li { margin-bottom: 0.35em; }
+
+        .reveal .subtitle { font-size: 0.62em; color: var(--text-muted); margin-top: 0.4em; }
+        .reveal .lead { font-size: 0.82em; color: var(--text-muted); max-width: 30em; margin: 0 auto 0.6em; }
+
+        .reveal .badge {
+            display: inline-block;
+            padding: 0.25em 0.8em;
+            border-radius: 20px;
+            font-size: 0.58em;
+            font-weight: 600;
+            margin: 0.15em;
+        }
+        .badge-python { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .badge-flask { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+        .badge-sql { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+        .badge-html { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .badge-css { background: rgba(98, 182, 203, 0.2); color: #eef2ff; }
+        .badge-i18n { background: rgba(34, 211, 238, 0.2); color: #67e8f9; }
+
+        .reveal .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.6em;
+            text-align: left;
+            margin-top: 0.4em;
+        }
+        .reveal .feature-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+
+        .reveal .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8em 1em;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .reveal .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+        .reveal .feature-card h3 { margin: 0 0 0.2em 0; font-size: 0.85em; color: var(--text); }
+        .reveal .feature-card p { margin: 0; color: var(--text-muted); font-size: 0.62em; }
+
+        .reveal .highlight-box {
+            background: var(--primary-soft);
+            border: 1px solid rgba(98, 182, 203, 0.35);
+            border-radius: 10px;
+            padding: 0.7em 1.1em;
+            margin-top: 0.7em;
+            font-size: 0.7em;
+            text-align: left;
+        }
+
+        .reveal .code-block {
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.8em 1.2em;
+            text-align: left;
+            font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+            font-size: 0.62em;
+            line-height: 1.6;
+        }
+        .reveal .code-block .comment { color: var(--text-muted); }
+        .reveal .code-block .keyword { color: var(--accent); }
+        .reveal .code-block .string { color: #6ee7b7; }
+
+        .reveal table.route-table,
+        .reveal table.model-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.6em;
+            margin-top: 0.4em;
+        }
+        .reveal .route-table th,
+        .reveal .model-table th {
+            background: var(--surface);
+            color: var(--primary);
+            padding: 0.5em 0.8em;
+            text-align: left;
+            border-bottom: 2px solid var(--primary);
+        }
+        .reveal .route-table td,
+        .reveal .model-table td {
+            padding: 0.4em 0.8em;
+            border-bottom: 1px solid var(--border);
+        }
+        .reveal .route-method {
+            display: inline-block;
+            padding: 0.1em 0.45em;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: 700;
+            font-family: monospace;
+        }
+        .method-get { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+        .method-post { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .method-put { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+        .method-delete { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+
+        .reveal .arch-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            margin-top: 0.5em;
+        }
+        .reveal .arch-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.7em 0.9em;
+            text-align: center;
+            font-size: 0.62em;
+            min-width: 6.5em;
+        }
+        .reveal .arch-box h3 { margin: 0 0 0.2em 0; font-size: 1em; }
+        .reveal .arch-box p { margin: 0; color: var(--text-muted); font-size: 0.85em; }
+        .reveal .arch-arrow { font-size: 1.3em; color: var(--primary); }
+        .arch-box-flask { border-color: var(--success); }
+        .arch-box-db { border-color: var(--warning); }
+        .arch-box-html { border-color: var(--info); }
+
+        .reveal .step-list { text-align: left; max-width: 26em; margin: 0 auto; }
+        .reveal .step {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            margin-bottom: 0.4em;
+            font-size: 0.8em;
+        }
+        .reveal .step-number {
+            display: grid;
+            place-items: center;
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #04201f;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .reveal .stats-row { display: flex; justify-content: center; gap: 1.6em; margin: 0.6em 0; }
+        .reveal .stat-item { text-align: center; }
+        .reveal .stat-item .number { font-size: 1.8em; font-weight: 800; display: block; }
+        .reveal .stat-item .label { font-size: 0.55em; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-teal .number { color: var(--primary); }
+        .stat-yellow .number { color: var(--warning); }
+        .stat-green .number { color: var(--success); }
+        .stat-red .number { color: var(--danger); }
+
+        /* ---------- Slides brilhantes (1 a 10) ---------- */
+        .reveal .bright h2 { text-shadow: 0 0 22px rgba(20, 184, 183, 0.7); }
+        .reveal .bright .lead { color: var(--text-muted); }
+        .reveal .bright p, .reveal .bright li, .reveal .bright td { color: var(--text); }
+        .reveal .bright .feature-card {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+            box-shadow: 0 0 20px var(--glow);
+        }
+        .reveal .bright .feature-card h3 { color: var(--card-text); }
+        .reveal .bright .feature-card p { color: var(--card-muted); }
+        .reveal .bright .highlight-box {
+            background: var(--box-bg);
+            border-color: var(--box-border);
+            box-shadow: 0 0 20px var(--glow);
+        }
+        .reveal .bright .code-block {
+            background: var(--code-bg);
+            border-color: var(--card-border);
+        }
+        .reveal .bright .arch-box {
+            background: var(--card-bg);
+            border-color: var(--card-border);
+            box-shadow: 0 0 18px var(--glow);
+        }
+        .reveal .bright .route-table th,
+        .reveal .bright .model-table th { background: var(--card-bg); }
+        .reveal .bright .route-table td,
+        .reveal .bright .model-table td { border-bottom-color: var(--card-border); }
+
+        .reveal h1, .reveal h2 { text-shadow: 0 2px 16px rgba(20,184,183,0.35); }
+        .reveal .progress { background: linear-gradient(90deg, var(--primary), var(--accent)); height: 3px; }
+        .reveal .slide-number { background: rgba(0,0,0,0.3); color: var(--primary); border-radius: 6px; padding: 0 0.3em; }
+
+        /* ---------- Seletor de tema ---------- */
+        .theme-toggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 40;
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--r-main-color);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 6px 18px var(--glow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .theme-toggle:hover { transform: scale(1.08); }
+        .theme-toggle svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .theme-toggle .icon-sun { display: none; }
+        [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+        [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+    </style>
+</head>
+<body>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+    </button>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 1. Capa -->
+            <section class="bright" data-background-gradient="var(--cover-bg)">
+                <div style="display:flex; justify-content:center; margin-bottom: 0.4em;">
+                    <img src="static/logo-v2.svg" alt="Task Manager" style="height:120px; width:auto; filter: drop-shadow(0 10px 24px rgba(6,182,212,0.45));">
+                </div>
+                <h1 style="text-align:center; font-size:2.4em; background:linear-gradient(135deg,#0ea5a4,#eef2ff,#06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Task Manager</h1>
+                <p class="subtitle" style="font-size:0.72em; text-align:center;">Sistema Web de Gerenciamento de Tarefas</p>
+                <p class="subtitle" style="margin-top: 1.4em; text-align:center;">
+                    <span class="badge badge-python">Python</span>
+                    <span class="badge badge-flask">Flask</span>
+                    <span class="badge badge-sql">SQLAlchemy</span>
+                    <span class="badge badge-sql">SQLite</span>
+                    <span class="badge badge-html">HTML</span>
+                    <span class="badge badge-css">CSS</span>
+                    <span class="badge badge-i18n">PT / EN</span>
+                </p>
+                <p class="subtitle" style="margin-top: 1.8em; text-align:center;">Pedro Albuquerque</p>
+            </section>
+
+            <!-- 2. Visão geral -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Visão Geral</h2>
+                <p class="lead">Uma aplicação web para organizar tarefas do dia a dia, com foco em simplicidade, clareza visual e boa experiência de uso.</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Organizar</h3>
+                        <p>Criar, editar e concluir tarefas com prioridade, prazo, tags e anexos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Encontrar</h3>
+                        <p>Buscar, filtrar, ordenar e paginar para achar qualquer tarefa rápido.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Acompanhar</h3>
+                        <p>Dashboard, alertas de atraso e lembretes automatizados.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Funcionalidades -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Funcionalidades</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>CRUD Completo</h3>
+                        <p>Criar, listar, editar e excluir tarefas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Prioridade e Prazo</h3>
+                        <p>Alta / média / baixa, com alerta de atraso e vence hoje.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Concluir com 1 Clique</h3>
+                        <p>Alterna entre pendente e concluída.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Tags / Categorias</h3>
+                        <p>Etiquetas por tarefa e filtro por tag.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Anexos</h3>
+                        <p>Upload e download de arquivos na tarefa.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Busca, Filtros e Paginação</h3>
+                        <p>Por texto, status, prioridade e ordenação.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Recursos avançados -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Recursos Avançados</h2>
+                <div class="feature-grid cols-2">
+                    <div class="feature-card">
+                        <h3>API REST (JSON)</h3>
+                        <p>CRUD completo de tarefas para integrações.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Lembretes e E-mail</h3>
+                        <p>Avisos de tarefas atrasadas por SMTP (ou console).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Dashboard</h3>
+                        <p>Total, pendentes, concluídas e atrasadas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Internacionalização</h3>
+                        <p>Interface em Português e Inglês (i18n próprio).</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    Anexos aceitos: pdf, png, jpg, gif, txt, doc, docx, zip — limite de <strong>5 MB</strong> por arquivo.
+                </div>
+            </section>
+
+            <!-- 5. Stack e Arquitetura -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Stack e Arquitetura</h2>
+                <div class="arch-diagram">
+                    <div class="arch-box arch-box-html">
+                        <h3>Templates</h3>
+                        <p>Jinja2 + CSS</p>
+                    </div>
+                    <div class="arch-arrow">&rarr;</div>
+                    <div class="arch-box arch-box-flask">
+                        <h3>Flask</h3>
+                        <p>Rotas + API</p>
+                    </div>
+                    <div class="arch-arrow">&rarr;</div>
+                    <div class="arch-box">
+                        <h3>SQLAlchemy</h3>
+                        <p>ORM</p>
+                    </div>
+                    <div class="arch-arrow">&rarr;</div>
+                    <div class="arch-box arch-box-db">
+                        <h3>SQLite</h3>
+                        <p>tasks.db</p>
+                    </div>
+                </div>
+                <div class="feature-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-top: 0.8em;">
+                    <div class="feature-card">
+                        <h3>Flask</h3>
+                        <p>Framework web leve para Python.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>SQLAlchemy + SQLite</h3>
+                        <p>ORM e banco relacional sem configuração.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>i18n próprio</h3>
+                        <p>Traduções em i18n.py, sem dependências extras.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Modelo de dados -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Modelo de Dados</h2>
+                <table class="model-table">
+                    <thead>
+                        <tr>
+                            <th>Entidade</th>
+                            <th>Campos principais</th>
+                            <th>Relação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Task</code></td>
+                            <td>title, description, priority, status, due_date, created_at, updated_at</td>
+                            <td>Centro do sistema</td>
+                        </tr>
+                        <tr>
+                            <td><code>Tag</code></td>
+                            <td>name</td>
+                            <td>N:N com Task</td>
+                        </tr>
+                        <tr>
+                            <td><code>Attachment</code></td>
+                            <td>filename, stored_name, created_at</td>
+                            <td>N:1 com Task</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="highlight-box">
+                    Propriedades calculadas: <code>is_overdue</code> (atrasada) e <code>is_due_today</code> (vence hoje).
+                </div>
+            </section>
+
+            <!-- 7. Rotas e API -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Rotas e API</h2>
+                <table class="route-table">
+                    <thead>
+                        <tr>
+                            <th>Rota</th>
+                            <th>Método</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/</code></td>
+                            <td><span class="route-method method-get">GET</span></td>
+                            <td>Página inicial</td>
+                        </tr>
+                        <tr>
+                            <td><code>/tasks</code></td>
+                            <td><span class="route-method method-get">GET</span></td>
+                            <td>Lista, busca, filtros e paginação</td>
+                        </tr>
+                        <tr>
+                            <td><code>/create</code></td>
+                            <td><span class="route-method method-get">GET</span> <span class="route-method method-post">POST</span></td>
+                            <td>Criar tarefa</td>
+                        </tr>
+                        <tr>
+                            <td><code>/edit/&lt;id&gt;</code></td>
+                            <td><span class="route-method method-get">GET</span> <span class="route-method method-post">POST</span></td>
+                            <td>Editar tarefa</td>
+                        </tr>
+                        <tr>
+                            <td><code>/toggle/&lt;id&gt;</code></td>
+                            <td><span class="route-method method-post">POST</span></td>
+                            <td>Concluir / reabrir</td>
+                        </tr>
+                        <tr>
+                            <td><code>/reminders</code></td>
+                            <td><span class="route-method method-get">GET</span> <span class="route-method method-post">POST</span></td>
+                            <td>Enviar lembretes</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/tasks</code></td>
+                            <td><span class="route-method method-get">GET</span> <span class="route-method method-post">POST</span> <span class="route-method method-put">PUT</span> <span class="route-method method-delete">DELETE</span></td>
+                            <td>API REST de tarefas</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="highlight-box">
+                    Qualquer rota aceita <code>?lang=pt</code> ou <code>?lang=en</code> para trocar o idioma.
+                </div>
+            </section>
+
+            <!-- 8. Experiência do Usuário -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Experiência do Usuário</h2>
+                <div class="feature-grid cols-2">
+                    <div class="feature-card">
+                        <h3>Tema Claro / Escuro</h3>
+                        <p>Alternância no topo, preferência salva no navegador.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Português / Inglês</h3>
+                        <p>Troca imediata; idioma guardado na sessão.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Sidebar e Breadcrumbs</h3>
+                        <p>Menu colapsável e caminho de navegação.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Acessibilidade</h3>
+                        <p>Skip link, foco visível, ARIA e feedback por mensagens.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. Qualidade e Como Rodar -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <h2>Qualidade e Como Rodar</h2>
+                <div class="feature-grid cols-2">
+                    <div class="feature-card">
+                        <h3>13 testes automatizados</h3>
+                        <p>unittest, banco temporário, cobrindo CRUD, filtros, idioma e API.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Consulta otimizada</h3>
+                        <p>Estatísticas do dashboard em uma única query agregada.</p>
+                    </div>
+                </div>
+                <div class="step-list" style="margin-top: 0.7em;">
+                    <div class="step"><span class="step-number">1</span><span>Instalar dependências</span></div>
+                    <div class="code-block" style="margin-left: 2.2em; margin-bottom: 0.5em; padding: 0.4em 1em;">pip install -r requirements.txt</div>
+                    <div class="step"><span class="step-number">2</span><span>Iniciar o servidor</span></div>
+                    <div class="code-block" style="margin-left: 2.2em; margin-bottom: 0.5em; padding: 0.4em 1em;">python3 app.py</div>
+                    <div class="step"><span class="step-number">3</span><span>Abrir no navegador</span></div>
+                    <div class="code-block" style="margin-left: 2.2em; padding: 0.4em 1em;">http://localhost:5000</div>
+                </div>
+            </section>
+
+            <!-- 10. Obrigado -->
+            <section class="bright" data-background-gradient="var(--slide-bg)">
+                <div style="display:flex; justify-content:center; margin-bottom: 0.3em;">
+                    <img src="static/logo-v2.svg" alt="Task Manager" style="height:92px; width:auto;">
+                </div>
+                <h1>Obrigado!</h1>
+                <p class="subtitle" style="margin-top: 0.8em; font-size: 0.7em;">Dúvidas?</p>
+                <p class="subtitle" style="font-size: 0.52em;">
+                    <span class="badge badge-python">Python</span>
+                    <span class="badge badge-flask">Flask</span>
+                    <span class="badge badge-sql">SQLAlchemy</span>
+                    <span class="badge badge-i18n">PT / EN</span>
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+        });
+
+        document.getElementById('themeToggle').addEventListener('click', function () {
+            var root = document.documentElement;
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('slides-theme', next);
+        });
+    </script>
+</body>
+</html>

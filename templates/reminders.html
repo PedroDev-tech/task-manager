@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ t('reminder.title') }}{% endblock %}
+{% block breadcrumb %}
+<span class="crumb-sep">/</span>
+<span class="crumb current">{{ t('reminder.crumb') }}</span>
+{% endblock %}
+{% block content %}
+<section class="page-head">
+    <div>
+        <h1>{{ t('reminder.heading') }}</h1>
+        <p class="page-sub">{{ t('reminder.sub') }}</p>
+    </div>
+</section>
+<div class="reminder-card">
+    <form method="POST" class="task-form">
+        <div class="reminder-row">
+            <div class="reminder-field form-group">
+                <label for="days">{{ t('reminder.days') }}</label>
+                <input type="number" id="days" name="days" value="1" min="0" max="30">
+            </div>
+            <div class="reminder-submit">
+                <button type="submit" class="btn btn-primary">Enviar lembretes</button>
+            </div>
+        </div>
+    </form>
+    <p style="margin-top:1rem; color:var(--text-muted); font-size:0.85rem;">
+        Modo atual: <strong>{{ mail_mode|default('console') }}</strong>. Configure SMTP/MAIL_MODE=smtp para envio real.
+    </p>
+</div>
+{% endblock %}

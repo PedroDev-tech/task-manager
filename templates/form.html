@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}{{ t('form.title_edit') if task else t('form.title_new') }}{% endblock %}
+{% block breadcrumb %}
+<span class="crumb-sep">/</span>
+<a href="{{ url_for('tasks') }}" class="crumb">{{ t('tasks.crumb') }}</a>
+<span class="crumb-sep">/</span>
+<span class="crumb current">{{ t('form.page_edit') if task else t('form.page_new') }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>{{ t('form.title_edit') if task else t('form.title_new') }}</h2>
+    <form method="POST" class="task-form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">{{ t('form.label_title') }}</label>
+            <input type="text" id="title" name="title" value="{{ task.title if task else '' }}" required maxlength="200" placeholder="{{ t('form.ph_title') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="description">{{ t('form.label_desc') }}</label>
+            <textarea id="description" name="description" rows="4" placeholder="{{ t('form.ph_desc') }}">{{ task.description if task else '' }}</textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="priority">{{ t('form.label_priority') }}</label>
+                <select id="priority" name="priority">
+                    <option value="baixa" {{ 'selected' if task and task.priority == 'baixa' }}>{{ t('prio.low') }}</option>
+                    <option value="media" {{ 'selected' if (not task) or (task and task.priority == 'media') }}>{{ t('prio.medium') }}</option>
+                    <option value="alta" {{ 'selected' if task and task.priority == 'alta' }}>{{ t('prio.high') }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">{{ t('form.label_status') }}</label>
+                <select id="status" name="status">
+                    <option value="pendente" {{ 'selected' if (not task) or (task and task.status == 'pendente') }}>{{ t('status.pending') }}</option>
+                    <option value="concluida" {{ 'selected' if task and task.status == 'concluida' }}>{{ t('status.done') }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="due_date">{{ t('form.label_due') }}</label>
+                <input type="date" id="due_date" name="due_date" value="{{ task.due_date.strftime('%Y-%m-%d') if task and task.due_date else '' }}">
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="tags">{{ t('form.label_tags') }}</label>
+            <input type="text" id="tags" name="tags" value="{{ task.tags|map(attribute='name')|join(', ') if task else '' }}" placeholder="{{ t('form.ph_tags') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="attachments">{{ t('form.label_attachments') }}</label>
+            <input type="file" id="attachments" name="attachments" multiple>
+            {% if task and task.attachments %}
+            <ul class="attachment-list">
+                {% for att in task.attachments %}
+                <li>
+                    <a href="{{ url_for('uploaded_file', filename=att.stored_name) }}" target="_blank">{{ att.filename }}</a>
+                    <form method="POST" action="{{ url_for('delete_attachment', attachment_id=att.id) }}" style="display:inline">
+                        <button type="submit" class="btn btn-sm btn-danger">x</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('tasks') }}" class="btn btn-ghost">{{ t('form.cancel') }}</a>
+            <button type="submit" class="btn btn-primary">{{ t('form.save') if task else t('form.create') }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
