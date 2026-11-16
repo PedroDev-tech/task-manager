@@ -1,38 +1,63 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500" viewBox="0 0 500 500" xml:space="preserve">
-<defs>
-  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#4CE8EC"/>
-    <stop offset="0.35" stop-color="#2DDCE1"/>
-    <stop offset="0.7" stop-color="#18C7D4"/>
-    <stop offset="1" stop-color="#0FA9B0"/>
-  </linearGradient>
-  <linearGradient id="ringGlow" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#4CE8EC"/>
-    <stop offset="1" stop-color="#2DDCE1"/>
-  </linearGradient>
-</defs>
-
-<!-- Outer white rim around ring (full circle, closing the gap) -->
-<path d="M 250 16 A 234 234 0 1 1 250 484"
-      fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.95"/>
-<!-- White rim closing the top to complete the circle -->
-<line x1="218" y1="18" x2="282" y2="18" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
-
-<!-- Ring (thick circle with open top) -->
-<path d="M 250 50 A 200 200 0 1 1 250 450"
-      fill="none" stroke="url(#ringGrad)" stroke-width="62" stroke-linecap="butt"/>
-
-<!-- T stem (vertical) - aligned with the opening at top -->
-<rect x="218" y="50" width="64" height="320" rx="6" fill="url(#ringGrad)"/>
-
-<!-- T bar (horizontal) at top of ring -->
-<rect x="125" y="92" width="250" height="64" rx="8" fill="url(#ringGrad)"/>
-
-<!-- White outline around T bar + stem -->
-<g fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.75" stroke-linejoin="round">
-  <rect x="125" y="92" width="250" height="64" rx="8"/>
-  <rect x="218" y="50" width="64" height="320" rx="6"/>
-</g>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="112.5 104 1030 1030" role="img" aria-label="Task Manager">
+  <defs>
+    <linearGradient id="tmBase" gradientUnits="userSpaceOnUse" x1="120" y1="104" x2="1135" y2="1134">
+      <stop offset="0%" stop-color="#212529"/>
+      <stop offset="48%" stop-color="#343A40"/>
+      <stop offset="100%" stop-color="#495057"/>
+    </linearGradient>
+    <radialGradient id="tmGlow" gradientUnits="userSpaceOnUse" cx="1020" cy="990" r="820">
+      <stop offset="0%" stop-color="#ADB5BD" stop-opacity="0.2"/>
+      <stop offset="38%" stop-color="#6C757D" stop-opacity="0.12"/>
+      <stop offset="68%" stop-color="#495057" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#495057" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tmGlow2" gradientUnits="userSpaceOnUse" cx="220" cy="220" r="500">
+      <stop offset="0%" stop-color="#CED4DA" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#6C757D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tmSheen" gradientUnits="userSpaceOnUse" x1="120" y1="104" x2="780" y2="780">
+      <stop offset="0%" stop-color="#F8F9FA" stop-opacity="0.1"/>
+      <stop offset="38%" stop-color="#E9ECEF" stop-opacity="0.045"/>
+      <stop offset="70%" stop-color="#F8F9FA" stop-opacity="0.01"/>
+      <stop offset="100%" stop-color="#F8F9FA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="tmGlyph" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8F9FA"/>
+      <stop offset="35%" stop-color="#E9ECEF"/>
+      <stop offset="70%" stop-color="#CED4DA"/>
+      <stop offset="100%" stop-color="#ADB5BD"/>
+    </linearGradient>
+    <linearGradient id="tmBorder" gradientUnits="userSpaceOnUse" x1="120" y1="104" x2="1135" y2="1134">
+      <stop offset="0%" stop-color="#E9ECEF" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#ADB5BD" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#6C757D" stop-opacity="0.26"/>
+    </linearGradient>
+    <filter id="glyphShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#212529" flood-opacity="0.42"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#ADB5BD" flood-opacity="0.2"/>
+    </filter>
+    <filter id="silverGlint" x="-100%" y="-100%" width="300%" height="300%">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#F8F9FA" flood-opacity="0.48"/>
+    </filter>
+    <filter id="innerGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18" result="blur"/>
+      <feOffset in="blur" dx="0" dy="0" result="offsetBlur"/>
+      <feFlood flood-color="#CED4DA" flood-opacity="0.12" result="color"/>
+      <feComposite in="color" in2="offsetBlur" operator="in" result="shadow"/>
+      <feComposite in="shadow" in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+  <rect x="120" y="104" width="1015" height="1030" rx="268" ry="268" fill="url(#tmBase)"/>
+  <rect x="120" y="104" width="1015" height="1030" rx="268" ry="268" fill="url(#tmGlow)"/>
+  <rect x="120" y="104" width="1015" height="1030" rx="268" ry="268" fill="url(#tmGlow2)"/>
+  <rect x="120" y="104" width="1015" height="1030" rx="268" ry="268" fill="url(#tmSheen)"/>
+   <rect x="126" y="110" width="1003" height="1018" rx="262" ry="262" fill="none" stroke="url(#tmBorder)" stroke-width="2.5"/>
+    <rect x="152" y="136" width="951" height="966" rx="244" ry="244" fill="none" stroke="#E9ECEF" stroke-opacity="0.08" stroke-width="2"/>
+  <g fill="#F8F9FA" opacity="0.88" filter="url(#silverGlint)">
+    <path d="M 0 -24 C 4 -6 6 -4 24 0 C 6 4 4 6 0 24 C -4 6 -6 4 -24 0 C -6 -4 -4 -6 0 -24 Z" transform="translate(1010 290)"/>
+    <path d="M 0 -24 C 4 -6 6 -4 24 0 C 6 4 4 6 0 24 C -4 6 -6 4 -24 0 C -6 -4 -4 -6 0 -24 Z" transform="translate(220 300) scale(0.62)" opacity="0.78"/>
+    <path d="M 0 -24 C 4 -6 6 -4 24 0 C 6 4 4 6 0 24 C -4 6 -6 4 -24 0 C -6 -4 -4 -6 0 -24 Z" transform="translate(282 870) scale(0.46)" opacity="0.72"/>
+  </g>
+  <path filter="url(#glyphShadow)" transform="translate(638.5 594) scale(1.12) translate(-638.5 -556)" d="M 894.00 744.25 C 893.98 700.42 892.57 601.31 891.95 600.62 C 890.55 599.09 884.62 600.89 879.13 604.50 C 876.21 606.43 873.60 608.00 873.32 608.00 C 873.04 608.00 870.76 609.80 868.26 612.00 C 865.76 614.20 863.19 616.00 862.54 616.00 C 861.89 616.00 858.91 618.30 855.93 621.10 C 852.94 623.91 847.35 628.25 843.50 630.75 C 839.65 633.25 833.73 637.93 830.34 641.15 C 826.95 644.37 823.42 647.00 822.49 647.00 C 820.47 647.00 809.66 655.64 808.01 658.58 C 807.37 659.72 804.52 661.83 801.67 663.27 C 796.44 665.91 794.09 667.60 786.63 674.09 C 784.36 676.06 780.48 678.76 778.01 680.09 C 775.53 681.41 772.74 683.17 771.81 684.00 C 770.87 684.83 767.49 686.85 764.30 688.49 C 758.66 691.40 755.85 693.39 751.58 697.50 C 750.44 698.60 749.15 699.38 748.72 699.24 C 748.29 699.10 747.02 699.83 745.90 700.88 C 744.78 701.92 743.09 702.57 742.14 702.33 C 741.20 702.08 739.12 702.90 737.53 704.16 C 735.93 705.41 733.94 706.54 733.09 706.66 C 732.25 706.79 731.09 707.51 730.53 708.28 C 728.86 710.54 725.37 712.00 721.62 712.00 C 719.70 712.00 717.84 712.45 717.50 713.00 C 717.16 713.55 715.84 714.00 714.56 714.00 C 713.29 714.00 711.70 714.66 711.03 715.46 C 707.73 719.43 705.29 718.35 694.23 708.01 C 692.18 706.10 687.80 702.29 684.50 699.55 C 676.51 692.93 653.94 672.71 635.89 656.02 C 627.85 648.58 618.62 640.05 615.39 637.05 C 612.15 634.06 607.25 629.61 604.50 627.16 C 598.87 622.16 596.34 618.12 591.54 606.52 C 586.42 594.16 585.46 585.48 587.53 570.13 C 589.34 556.66 590.72 552.99 597.73 543.04 C 601.90 537.12 610.68 531.01 615.01 531.00 C 616.39 531.00 618.89 530.61 620.57 530.12 C 624.99 528.86 634.50 530.62 639.72 533.68 C 642.17 535.12 648.95 540.61 654.79 545.90 C 660.63 551.18 672.20 561.58 680.50 569.00 C 688.81 576.42 701.26 587.60 708.18 593.82 C 721.27 605.62 726.98 610.00 729.22 610.00 C 730.49 610.00 736.23 605.77 744.36 598.85 C 746.49 597.05 751.34 593.21 755.15 590.32 C 761.30 585.66 767.17 581.01 773.47 575.83 C 774.59 574.91 782.02 569.10 790.00 562.91 C 797.98 556.72 807.88 549.02 812.00 545.80 C 819.74 539.74 859.85 509.58 863.63 506.97 C 864.80 506.16 870.30 502.12 875.85 498.00 C 887.48 489.36 895.66 484.04 903.78 479.86 C 906.93 478.24 910.17 476.53 911.00 476.05 C 915.93 473.19 931.26 466.61 935.50 465.53 C 945.16 463.07 956.66 465.57 962.49 471.40 C 972.43 481.34 975.47 520.71 974.61 628.50 C 974.33 664.80 973.87 697.74 973.59 701.70 C 973.03 709.71 971.10 731.12 970.58 735.00 C 970.39 736.38 969.92 740.76 969.52 744.75 L 968.80 752.00 L 931.40 752.00 L 894.00 752.00 L 894.00 744.25 Z M 528.57 728.46 C 527.14 726.56 526.46 726.25 525.83 727.21 C 525.19 728.21 524.82 728.22 524.22 727.29 C 523.47 726.14 515.00 725.83 515.00 726.96 C 515.00 727.26 511.40 727.50 507.00 727.50 C 502.60 727.50 499.00 727.14 499.00 726.69 C 499.00 726.25 498.55 726.16 498.00 726.50 C 497.45 726.84 497.00 726.61 497.00 725.99 C 497.00 725.34 496.20 725.12 495.08 725.47 C 494.03 725.81 492.86 725.59 492.49 724.98 C 492.07 724.30 488.68 723.96 483.53 724.08 C 478.98 724.19 474.79 723.99 474.22 723.64 C 472.51 722.58 470.05 713.00 469.43 705.00 C 469.11 700.88 468.61 645.98 468.32 583.00 C 468.02 518.83 467.39 467.76 466.89 466.81 C 466.37 465.82 464.23 464.87 461.75 464.51 C 459.41 464.17 423.75 463.79 382.50 463.65 C 314.61 463.43 307.48 463.25 307.20 461.80 C 306.87 460.09 315.47 433.36 316.93 431.57 C 317.41 430.98 319.72 426.90 322.07 422.50 C 337.02 394.52 355.91 380.47 386.00 374.95 C 392.91 373.68 708.14 373.79 715.99 375.07 C 719.56 375.65 723.16 376.68 723.99 377.37 C 724.82 378.06 727.41 379.45 729.75 380.46 C 732.09 381.48 734.00 382.63 734.00 383.03 C 734.00 383.43 735.27 384.28 736.82 384.93 C 741.71 386.95 749.66 398.87 753.08 409.31 C 755.06 415.32 755.18 416.70 754.16 421.13 C 753.52 423.89 753.00 428.98 753.00 432.43 C 753.00 437.89 752.64 439.09 750.25 441.68 C 748.74 443.31 746.83 445.70 746.00 446.98 C 742.23 452.84 738.19 456.32 731.13 459.77 L 723.50 463.50 L 643.50 464.00 C 599.50 464.27 562.71 464.89 561.74 465.36 C 560.77 465.83 559.73 467.41 559.42 468.86 C 559.11 470.31 558.26 473.52 557.52 476.00 C 555.37 483.26 554.93 495.21 554.53 556.50 C 554.10 621.63 553.33 653.18 551.91 663.50 C 551.38 667.35 550.31 677.02 549.53 685.00 C 547.81 702.64 545.45 711.92 540.92 719.00 C 540.39 719.83 539.00 721.99 537.84 723.81 C 536.69 725.62 535.19 726.90 534.53 726.65 C 533.86 726.39 532.70 726.57 531.94 727.04 C 531.09 727.56 530.26 727.43 529.79 726.70 C 529.22 725.79 529.03 725.81 529.02 726.78 C 529.01 727.49 529.67 728.32 530.50 728.64 C 531.33 728.95 532.00 729.62 532.00 730.11 C 532.00 731.75 530.49 731.03 528.57 728.46 Z" fill="url(#tmGlyph)"/>
 </svg>

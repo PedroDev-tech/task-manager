@@ -6,6 +6,10 @@
     <span class="hero-eyebrow">{{ t('home.eyebrow') }}</span>
     <h1>{{ t('home.heading') }}</h1>
     <p class="hero-sub">{{ t('home.sub') }}</p>
+    <div class="hero-actions">
+        <a href="{{ url_for('tasks') }}" class="btn btn-primary">{{ t('home.cta_btn') }}</a>
+        <a href="{{ url_for('create') }}" class="btn btn-ghost">{{ t('nav.new_task') }}</a>
+    </div>
 </section>
 
 <section class="home-section">
