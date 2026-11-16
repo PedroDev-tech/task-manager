@@ -1970,7 +1970,7 @@ a.stat-card {
     --bg: #212529;
     --gradient-accent: linear-gradient(135deg, #adb5bd 0%, #ced4da 52%, #e9ecef 100%);
     --gradient-accent-soft: linear-gradient(135deg, rgba(173, 181, 189, 0.18), rgba(52, 58, 64, 0.18));
-    --gradient-surface: linear-gradient(155deg, rgba(52, 58, 64, 0.96), rgba(33, 37, 41, 0.98));
+    --gradient-surface: linear-gradient(135deg, rgba(73, 80, 87, 0.88) 0%, rgba(52, 58, 64, 0.95) 48%, rgba(33, 37, 41, 0.99) 100%);
     --border-soft: rgba(206, 212, 218, 0.14);
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
     --shadow-lift: 0 20px 44px rgba(0, 0, 0, 0.46);
@@ -2519,11 +2519,11 @@ h3,
     --surface-hover: var(--alabaster-grey);
     --border: rgba(73, 80, 87, 0.16);
     --text: var(--carbon-black);
-    --text-muted: var(--iron-grey);
+    --text-muted: var(--gunmetal);
     --primary: var(--iron-grey);
     --primary-hover: var(--gunmetal);
     --primary-soft: rgba(73, 80, 87, 0.12);
-    --accent: var(--slate-grey);
+    --accent: var(--iron-grey);
     --success: var(--iron-grey);
     --warning: var(--slate-grey);
     --danger: var(--gunmetal);
@@ -2544,7 +2544,7 @@ h3,
 }
 
 [data-theme="dark"] {
-    --bg: var(--carbon-black);
+    --bg: #1c1f23;
     --surface: var(--gunmetal);
     --surface-soft: rgba(206, 212, 218, 0.08);
     --surface-hover: rgba(206, 212, 218, 0.12);
@@ -2579,8 +2579,9 @@ body {
 
 [data-theme="dark"] body {
     background:
-        radial-gradient(1100px 720px at 8% -8%, rgba(108, 117, 125, 0.18), transparent 58%),
-        radial-gradient(1000px 800px at 100% 0%, rgba(52, 58, 64, 0.84), transparent 62%),
+        radial-gradient(1100px 720px at 8% -8%, rgba(173, 181, 189, 0.13), transparent 58%),
+        radial-gradient(1000px 800px at 100% 0%, rgba(73, 80, 87, 0.58), transparent 62%),
+        linear-gradient(145deg, #1c1f23 0%, #292e33 56%, #1c1f23 100%),
         var(--bg) !important;
 }
 
@@ -2595,6 +2596,12 @@ body {
     background:
         radial-gradient(520px 380px at 100% 0%, rgba(108, 117, 125, 0.24), transparent 70%),
         linear-gradient(165deg, #212529 0%, #343a40 58%, #495057 100%) !important;
+}
+
+[data-theme="dark"] .sidebar {
+    background:
+        radial-gradient(520px 380px at 100% 0%, rgba(173, 181, 189, 0.12), transparent 70%),
+        linear-gradient(165deg, #1c1f23 0%, #292e33 58%, #1c1f23 100%) !important;
 }
 
 .side-nav-title,
@@ -2654,16 +2661,35 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.hero-eyebrow,
-.tag-chip,
-[data-theme="dark"] .tag-chip {
-    color: var(--slate-grey) !important;
+.hero-eyebrow {
+    color: var(--platinum) !important;
     text-shadow: none;
 }
 
-[data-theme="dark"] .hero-eyebrow,
+.tag-chip,
+[data-theme="dark"] .tag-chip {
+    color: var(--gunmetal) !important;
+}
+
+[data-theme="dark"] .hero-eyebrow {
+    color: var(--bright-snow) !important;
+}
+
 [data-theme="dark"] .tag-chip {
     color: var(--pale-slate) !important;
+}
+
+[data-theme="light"] ::placeholder {
+    color: var(--slate-grey);
+    opacity: 1;
+}
+
+[data-theme="light"] .task-card.task-done {
+    opacity: 0.84;
+}
+
+[data-theme="light"] .page-link.disabled {
+    opacity: 0.58;
 }
 
 .priority-alta,
@@ -2753,7 +2779,7 @@ body {
 }
 
 [data-theme="dark"] .topbar {
-    background: linear-gradient(180deg, rgba(52, 58, 64, 0.94), rgba(33, 37, 41, 0.9)) !important;
+    background: linear-gradient(180deg, rgba(41, 46, 51, 0.94), rgba(28, 31, 35, 0.94)) !important;
     border-bottom-color: rgba(206, 212, 218, 0.14);
 }
 
@@ -2761,4 +2787,185 @@ body {
 .login-showcase p,
 .login-points {
     color: var(--platinum) !important;
+}
+
+.stat-card,
+.task-card,
+.mini-task,
+.feature-card,
+.toolbar,
+.task-form,
+.reminder-card,
+.empty-state,
+.kanban-card,
+.login-card,
+.login-panel,
+.hero,
+.cta-band,
+.steps li {
+    border-color: rgba(108, 117, 125, 0.38) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(248, 249, 250, 0.72),
+        0 0 18px rgba(173, 181, 189, 0.24),
+        0 12px 28px rgba(33, 37, 41, 0.12) !important;
+}
+
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .task-card,
+[data-theme="dark"] .mini-task,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .toolbar,
+[data-theme="dark"] .task-form,
+[data-theme="dark"] .reminder-card,
+[data-theme="dark"] .empty-state,
+[data-theme="dark"] .kanban-card,
+[data-theme="dark"] .login-card,
+[data-theme="dark"] .login-panel,
+[data-theme="dark"] .hero,
+[data-theme="dark"] .cta-band,
+[data-theme="dark"] .steps li {
+    border-color: rgba(233, 236, 239, 0.38) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(248, 249, 250, 0.14),
+        0 0 24px rgba(206, 212, 218, 0.18),
+        0 14px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+.stat-card,
+.task-card,
+.mini-task,
+.feature-card,
+.toolbar,
+.task-form,
+.reminder-card,
+.empty-state,
+.kanban-card,
+.login-card,
+.login-panel,
+.hero,
+.cta-band,
+.steps li {
+    transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.stat-card:hover,
+.task-card:hover,
+.mini-task:hover,
+.feature-card:hover,
+.toolbar:hover,
+.task-form:hover,
+.reminder-card:hover,
+.empty-state:hover,
+.kanban-card:hover,
+.login-card:hover,
+.login-panel:hover,
+.hero:hover,
+.cta-band:hover,
+.steps li:hover {
+    border-color: rgba(108, 117, 125, 0.78) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.96),
+        0 0 0 2px rgba(173, 181, 189, 0.34),
+        0 0 28px rgba(173, 181, 189, 0.46),
+        0 18px 42px rgba(33, 37, 41, 0.2) !important;
+}
+
+[data-theme="dark"] .stat-card:hover,
+[data-theme="dark"] .task-card:hover,
+[data-theme="dark"] .mini-task:hover,
+[data-theme="dark"] .feature-card:hover,
+[data-theme="dark"] .toolbar:hover,
+[data-theme="dark"] .task-form:hover,
+[data-theme="dark"] .reminder-card:hover,
+[data-theme="dark"] .empty-state:hover,
+[data-theme="dark"] .kanban-card:hover,
+[data-theme="dark"] .login-card:hover,
+[data-theme="dark"] .login-panel:hover,
+[data-theme="dark"] .hero:hover,
+[data-theme="dark"] .cta-band:hover,
+[data-theme="dark"] .steps li:hover {
+    border-color: rgba(248, 249, 250, 0.74) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(248, 249, 250, 0.28),
+        0 0 0 2px rgba(206, 212, 218, 0.3),
+        0 0 32px rgba(206, 212, 218, 0.34),
+        0 20px 44px rgba(0, 0, 0, 0.48) !important;
+}
+
+.task-delete-form {
+    display: flex;
+    align-items: center;
+}
+
+.delete-confirm-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.task-delete-form [hidden] {
+    display: none !important;
+}
+
+.delete-confirm-prompt {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-right: 0.15rem;
+}
+
+.task-delete-form .btn-danger {
+    border: 1px solid rgba(108, 117, 125, 0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.task-delete-form .btn-danger:hover,
+.task-delete-form .btn-danger:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(248, 249, 250, 0.9) !important;
+    box-shadow: 0 0 0 1px rgba(248, 249, 250, 0.76), 0 0 18px rgba(206, 212, 218, 0.72), 0 8px 20px rgba(33, 37, 41, 0.22) !important;
+}
+
+[data-theme="dark"] .task-delete-form .btn-danger {
+    border-color: rgba(206, 212, 218, 0.3);
+}
+
+[data-theme="dark"] .task-delete-form .btn-danger:hover,
+[data-theme="dark"] .task-delete-form .btn-danger:focus-visible {
+    border-color: rgba(248, 249, 250, 0.96) !important;
+    box-shadow: 0 0 0 1px rgba(248, 249, 250, 0.82), 0 0 22px rgba(206, 212, 218, 0.76), 0 10px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+@media (max-width: 520px) {
+    .task-actions {
+        flex-wrap: wrap;
+    }
+
+    .delete-confirm-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .delete-confirm-prompt {
+        flex: 1 1 100%;
+    }
+}
+
+.btn-icon-action {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+}
+
+.btn-icon-action svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
