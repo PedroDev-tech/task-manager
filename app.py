@@ -522,7 +522,7 @@ def uploaded_file(filename):
 
 @app.route("/favicon.ico")
 def favicon():
-    return send_from_directory(app.static_folder, "favicon.png", mimetype="image/png")
+    return send_from_directory(app.static_folder, "task-manager-logo.png", mimetype="image/png")
 
 
 @app.route("/attachments/<int:attachment_id>/delete", methods=["POST"])

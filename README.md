@@ -45,11 +45,7 @@ task-manager/
 ├── README.md
 ├── static/
 │   ├── style.css             # Estilos da interface (temas claro/escuro)
-│   ├── logo-v2.svg           # Logomarca (vetorial)
-│   ├── logo-v2.png           # Logomarca (bitmap)
-│   ├── favicon.png           # Favicon 64x64
-│   ├── logo-v2-favicon.png   # Favicon 32x32
-│   └── apple-touch-icon.png  # Ícone para iOS
+│   ├── task-manager-logo.png # Logomarca oficial e favicon
 ├── templates/
 │   ├── base.html             # Layout base (sidebar, topbar, tema, i18n, flashes)
 │   ├── home.html             # Página inicial (landing)

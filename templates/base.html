@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Task Manager{% endblock %}</title>
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='logo.svg') }}?v=23">
-    <link rel="icon" type="image/png" sizes="64x64" href="{{ url_for('static', filename='favicon.png') }}?v=23">
-    <link rel="alternate icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='logo-v2-favicon.png') }}?v=23">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}?v=23">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=26">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=26">
     <script>
         (function () {
             var saved = localStorage.getItem('theme');
@@ -29,7 +27,7 @@
     {% set is_login = request.endpoint == 'login' %}
     {% macro brand_mark() %}
     <span class="brand-mark">
-        <img src="{{ url_for('static', filename='logo.svg') }}?v=23" alt="" aria-hidden="true">
+        <img src="{{ url_for('static', filename='task-manager-logo.png') }}?v=26" alt="" aria-hidden="true">
     </span>
     {% endmacro %}
 
