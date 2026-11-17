@@ -1,40 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Task Manager">
   <defs>
     <linearGradient id="silverBase" x1="44" y1="480" x2="468" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#212529"/>
-      <stop offset="0.38" stop-color="#343a40"/>
-      <stop offset="0.72" stop-color="#495057"/>
-      <stop offset="1" stop-color="#6c757d"/>
+      <stop offset="0" stop-color="#696663"/>
+      <stop offset="0.38" stop-color="#73706d"/>
+      <stop offset="0.72" stop-color="#7e7b78"/>
+      <stop offset="1" stop-color="#8b8784"/>
     </linearGradient>
     <radialGradient id="silverTopGlow" cx="418" cy="82" r="300" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8f9fa" stop-opacity="0.38"/>
-      <stop offset="0.42" stop-color="#ced4da" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#6c757d" stop-opacity="0"/>
+      <stop offset="0" stop-color="#f5efe8" stop-opacity="0.38"/>
+      <stop offset="0.42" stop-color="#cbc5c0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#8b8784" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="silverDepth" cx="58" cy="462" r="270" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#212529" stop-opacity="0.52"/>
-      <stop offset="1" stop-color="#212529" stop-opacity="0"/>
+      <stop offset="0" stop-color="#696663" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#696663" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="silverSheen" x1="36" y1="16" x2="326" y2="310" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8f9fa" stop-opacity="0.17"/>
-      <stop offset="0.45" stop-color="#e9ecef" stop-opacity="0.055"/>
-      <stop offset="1" stop-color="#f8f9fa" stop-opacity="0"/>
+      <stop offset="0" stop-color="#f5efe8" stop-opacity="0.17"/>
+      <stop offset="0.45" stop-color="#f5efe8" stop-opacity="0.055"/>
+      <stop offset="1" stop-color="#f5efe8" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="silverGlyph" x1="144" y1="160" x2="390" y2="366" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8f9fa"/>
-      <stop offset="0.28" stop-color="#ced4da"/>
-      <stop offset="0.52" stop-color="#f8f9fa"/>
-      <stop offset="0.78" stop-color="#adb5bd"/>
-      <stop offset="1" stop-color="#e9ecef"/>
+      <stop offset="0" stop-color="#f5efe8"/>
+      <stop offset="0.28" stop-color="#cbc5c0"/>
+      <stop offset="0.52" stop-color="#f5efe8"/>
+      <stop offset="0.78" stop-color="#b9b3af"/>
+      <stop offset="1" stop-color="#f5efe8"/>
     </linearGradient>
     <linearGradient id="silverRim" x1="10" y1="10" x2="502" y2="502" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8f9fa" stop-opacity="0.58"/>
-      <stop offset="0.5" stop-color="#ced4da" stop-opacity="0.3"/>
-      <stop offset="1" stop-color="#adb5bd" stop-opacity="0.44"/>
+      <stop offset="0" stop-color="#f5efe8" stop-opacity="0.58"/>
+      <stop offset="0.5" stop-color="#cbc5c0" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#b9b3af" stop-opacity="0.44"/>
     </linearGradient>
     <filter id="markDepth" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#212529" flood-opacity="0.48"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#f8f9fa" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#696663" flood-opacity="0.48"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#f5efe8" flood-opacity="0.18"/>
     </filter>
     <clipPath id="iconClip">
       <rect x="8" y="8" width="496" height="496" rx="118"/>
@@ -47,7 +47,7 @@
     <rect x="8" y="8" width="496" height="496" rx="118" fill="url(#silverSheen)"/>
   </g>
   <rect x="9.5" y="9.5" width="493" height="493" rx="116.5" fill="none" stroke="url(#silverRim)" stroke-width="3"/>
-  <rect x="23" y="23" width="466" height="466" rx="105" fill="none" stroke="#f8f9fa" stroke-opacity="0.1" stroke-width="1.5"/>
+  <rect x="23" y="23" width="466" height="466" rx="105" fill="none" stroke="#f5efe8" stroke-opacity="0.1" stroke-width="1.5"/>
   <g filter="url(#markDepth)">
     <rect x="196" y="176" width="36" height="188" rx="18" fill="url(#silverGlyph)"/>
     <rect x="122" y="158" width="184" height="36" rx="12" fill="url(#silverGlyph)"/>

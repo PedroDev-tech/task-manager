@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager - Apresentação</title>
-    <link rel="icon" type="image/png" href="static/task-manager-logo.png?v=26">
-    <link rel="apple-touch-icon" href="static/task-manager-logo.png?v=26">
+    <link rel="icon" type="image/png" href="static/task-manager-logo.png?v=28">
+    <link rel="apple-touch-icon" href="static/task-manager-logo.png?v=28">
     <script>
         (function () {
             var saved = localStorage.getItem('slides-theme');
@@ -37,88 +37,101 @@
         }
 
         :root {
-            --bright-snow: #f8f9fa;
-            --platinum: #e9ecef;
-            --alabaster-grey: #dee2e6;
-            --pale-slate: #ced4da;
-            --pale-slate-2: #adb5bd;
-            --slate-grey: #6c757d;
-            --iron-grey: #495057;
-            --gunmetal: #343a40;
-            --carbon-black: #212529;
-            --r-background-color: #1c1f23;
+            --dim-grey: #696663ff;
+            --dim-grey-2: #73706dff;
+            --grey: #7e7b78ff;
+            --grey-olive: #8b8784ff;
+            --rosy-granite: #999491ff;
+            --silver: #a8a39fff;
+            --silver-2: #b9b3afff;
+            --silver-3: #cbc5c0ff;
+            --dust-grey: #dfd9d3ff;
+            --parchment: #f5efe8ff;
+
+            --bright-snow: var(--parchment);
+            --platinum: var(--dust-grey);
+            --alabaster-grey: var(--silver-3);
+            --pale-slate: var(--silver-2);
+            --pale-slate-2: var(--silver);
+            --slate-grey: var(--grey-olive);
+            --iron-grey: var(--grey);
+            --gunmetal: var(--dim-grey-2);
+            --carbon-black: var(--dim-grey);
+            --r-background-color: var(--dim-grey);
             --r-main-font: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
             --r-heading-font: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
-            --r-main-color: #f8f9fa;
-            --r-heading-color: #f8f9fa;
-            --r-link-color: #ced4da;
+            --r-main-color: var(--parchment);
+            --r-heading-color: var(--parchment);
+            --r-link-color: var(--silver-2);
 
-            --surface: #343a40;
-            --surface-soft: #495057;
-            --border: rgba(206, 212, 218, 0.2);
-            --text-muted: #ced4da;
-            --primary: #adb5bd;
-            --primary-soft: rgba(173, 181, 189, 0.16);
-            --accent: #e9ecef;
-            --success: #adb5bd;
-            --warning: #ced4da;
-            --danger: #6c757d;
-            --info: #e9ecef;
+            --surface: linear-gradient(155deg, var(--dim-grey-2) 0%, var(--dim-grey) 100%);
+            --surface-soft: var(--grey);
+            --border: rgba(223,217,211,0.24);
+            --text-muted: var(--silver-3);
+            --primary: var(--silver);
+            --primary-soft: rgba(168,163,159,0.2);
+            --accent: var(--dust-grey);
+            --success: var(--silver);
+            --warning: var(--silver-2);
+            --danger: var(--grey-olive);
+            --info: var(--dust-grey);
 
-            --text: #f8f9fa;
-            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(173, 181, 189, 0.16), transparent 62%), linear-gradient(145deg, #1c1f23 0%, #292e33 48%, #1c1f23 100%);
-            --cover-bg: radial-gradient(ellipse at top, rgba(173, 181, 189, 0.18), transparent 62%), linear-gradient(135deg, #1c1f23 0%, #343a40 52%, #1c1f23 100%);
-            --card-bg: #343a40;
-            --card-border: rgba(206, 212, 218, 0.16);
-            --card-text: #f8f9fa;
-            --card-muted: #ced4da;
-            --code-bg: #1c1f23;
-            --box-bg: rgba(108, 117, 125, 0.16);
-            --box-border: rgba(173, 181, 189, 0.4);
-            --glow: rgba(108, 117, 125, 0.14);
-            --gold-border: #adb5bd;
-            --gold-glow: 0 0 0 1px rgba(173, 181, 189, 0.44), 0 0 20px rgba(108, 117, 125, 0.26), 0 0 48px rgba(73, 80, 87, 0.16);
+            --text: var(--parchment);
+            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(203,197,192,0.16), transparent 62%), linear-gradient(145deg, var(--dim-grey) 0%, var(--dim-grey-2) 52%, var(--dim-grey) 100%);
+            --cover-bg: radial-gradient(ellipse at top, rgba(203,197,192,0.18), transparent 62%), linear-gradient(135deg, var(--dim-grey) 0%, var(--dim-grey-2) 52%, var(--dim-grey) 100%);
+            --card-bg: linear-gradient(155deg, var(--dim-grey-2), var(--dim-grey));
+            --card-border: rgba(223,217,211,0.22);
+            --card-text: var(--parchment);
+            --card-muted: var(--silver-3);
+            --code-bg: var(--dim-grey);
+            --box-bg: rgba(168,163,159,0.2);
+            --box-border: rgba(185,179,175,0.46);
+            --glow: rgba(168,163,159,0.18);
+            --gold-border: var(--silver-2);
+            --gold-glow: 0 0 0 1px rgba(185,179,175,0.52), 0 0 20px rgba(168,163,159,0.26), 0 0 48px rgba(126,123,120,0.18);
         }
 
         [data-theme="light"] {
-            --r-background-color: #f8f9fa;
-            --r-main-color: #212529;
-            --r-heading-color: #212529;
-            --r-link-color: #495057;
+            --r-background-color: var(--parchment);
+            --r-main-color: var(--dim-grey);
+            --r-heading-color: var(--dim-grey);
+            --r-link-color: var(--dim-grey);
 
-            --surface: #ffffff;
-            --surface-soft: #e9ecef;
-            --border: rgba(73, 80, 87, 0.16);
-            --text-muted: #495057;
-            --primary: #495057;
-            --primary-soft: rgba(73, 80, 87, 0.12);
-            --accent: #6c757d;
+            --surface: linear-gradient(155deg, var(--parchment) 0%, rgba(223,217,211,0.46) 100%);
+            --surface-soft: var(--dust-grey);
+            --border: rgba(105,102,99,0.32);
+            --text-muted: var(--dim-grey);
+            --primary: var(--dim-grey);
+            --primary-soft: rgba(105,102,99,0.16);
+            --accent: var(--grey);
 
-            --text: #212529;
-            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(108, 117, 125, 0.12), transparent 60%), linear-gradient(160deg, #ffffff, #f8f9fa);
-            --cover-bg: radial-gradient(ellipse at top, rgba(108, 117, 125, 0.16), transparent 62%), linear-gradient(135deg, #f8f9fa, #e9ecef);
-            --card-bg: #ffffff;
-            --card-border: rgba(73, 80, 87, 0.16);
-            --card-text: #212529;
-            --card-muted: #495057;
-            --code-bg: #f8f9fa;
-            --box-bg: rgba(108, 117, 125, 0.1);
-            --box-border: rgba(73, 80, 87, 0.24);
-            --glow: rgba(108, 117, 125, 0.14);
+            --text: var(--dim-grey);
+            --slide-bg: radial-gradient(ellipse at 50% 0%, rgba(139,135,132,0.14), transparent 60%), linear-gradient(160deg, var(--parchment) 0%, rgba(223,217,211,0.42) 48%, var(--parchment) 100%);
+            --cover-bg: radial-gradient(ellipse at top, rgba(139,135,132,0.18), transparent 62%), linear-gradient(135deg, var(--parchment) 0%, rgba(223,217,211,0.52) 100%);
+            --card-bg: linear-gradient(155deg, var(--parchment), rgba(223,217,211,0.5));
+            --card-border: rgba(105,102,99,0.3);
+            --card-text: var(--dim-grey);
+            --card-muted: var(--dim-grey);
+            --code-bg: var(--dust-grey);
+            --box-bg: rgba(139,135,132,0.14);
+            --box-border: rgba(105,102,99,0.34);
+            --glow: rgba(105,102,99,0.16);
+            --gold-border: var(--rosy-granite);
+            --gold-glow: 0 0 0 1px rgba(153,148,145,0.5), 0 0 20px rgba(126,123,120,0.24), 0 0 44px rgba(105,102,99,0.12);
         }
 
         [data-theme="light"] .reveal h1 {
-            background: linear-gradient(135deg, #343a40, #6c757d) !important;
+            background: linear-gradient(135deg, var(--dim-grey-2), var(--grey-olive)) !important;
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
         }
-        [data-theme="light"] .badge-python { color: #343a40; }
-        [data-theme="light"] .badge-flask { color: #343a40; }
-        [data-theme="light"] .badge-sql { color: #495057; }
-        [data-theme="light"] .badge-html { color: #343a40; }
-        [data-theme="light"] .badge-css { color: #343a40; }
-        [data-theme="light"] .badge-i18n { color: #343a40; }
-        [data-theme="light"] .method-get, [data-theme="light"] .method-post { color: #343a40; }
+        [data-theme="light"] .badge-python { color: #73706d; }
+        [data-theme="light"] .badge-flask { color: #73706d; }
+        [data-theme="light"] .badge-sql { color: #7e7b78; }
+        [data-theme="light"] .badge-html { color: #73706d; }
+        [data-theme="light"] .badge-css { color: #73706d; }
+        [data-theme="light"] .badge-i18n { color: #73706d; }
+        [data-theme="light"] .method-get, [data-theme="light"] .method-post { color: #73706d; }
 
         .reveal { font-size: 34px; letter-spacing: -0.005em; }
         .reveal h1 { font-size: 2.2em; color: var(--primary); letter-spacing: -0.03em; }
@@ -140,12 +153,12 @@
             font-weight: 600;
             margin: 0.15em;
         }
-        .badge-python { background: rgba(73, 80, 87, 0.18); color: #f8f9fa; }
-        .badge-flask { background: rgba(52, 58, 64, 0.3); color: #f8f9fa; }
-        .badge-sql { background: rgba(108, 117, 125, 0.18); color: #e9ecef; }
-        .badge-html { background: rgba(173, 181, 189, 0.16); color: #dee2e6; }
-        .badge-css { background: rgba(206, 212, 218, 0.16); color: #f8f9fa; }
-        .badge-i18n { background: rgba(108, 117, 125, 0.18); color: #f8f9fa; }
+        .badge-python { background: rgba(126,123,120,0.18); color: #f5efe8; }
+        .badge-flask { background: rgba(115,112,109,0.3); color: #f5efe8; }
+        .badge-sql { background: rgba(139,135,132,0.18); color: #f5efe8; }
+        .badge-html { background: rgba(185,179,175,0.16); color: #dfd9d3; }
+        .badge-css { background: rgba(203,197,192,0.16); color: #f5efe8; }
+        .badge-i18n { background: rgba(139,135,132,0.18); color: #f5efe8; }
 
         .reveal .feature-grid {
             display: grid;
@@ -172,7 +185,7 @@
 
         .reveal .highlight-box {
             background: var(--primary-soft);
-            border: 1px solid rgba(108, 117, 125, 0.35);
+            border: 1px solid rgba(139,135,132,0.35);
             border-radius: 10px;
             padding: 0.7em 1.1em;
             margin-top: 0.7em;
@@ -192,7 +205,7 @@
         }
         .reveal .code-block .comment { color: var(--text-muted); }
         .reveal .code-block .keyword { color: var(--accent); }
-        .reveal .code-block .string { color: #adb5bd; }
+        .reveal .code-block .string { color: #b9b3af; }
 
         .reveal table.route-table,
         .reveal table.model-table {
@@ -222,10 +235,10 @@
             font-weight: 700;
             font-family: monospace;
         }
-        .method-get { background: rgba(73, 80, 87, 0.2); color: #f8f9fa; }
-        .method-post { background: rgba(52, 58, 64, 0.25); color: #f8f9fa; }
-        .method-put { background: rgba(108, 117, 125, 0.2); color: #e9ecef; }
-        .method-delete { background: rgba(173, 181, 189, 0.2); color: #dee2e6; }
+        .method-get { background: rgba(126,123,120,0.2); color: #f5efe8; }
+        .method-post { background: rgba(115,112,109,0.25); color: #f5efe8; }
+        .method-put { background: rgba(139,135,132,0.2); color: #f5efe8; }
+        .method-delete { background: rgba(185,179,175,0.2); color: #dfd9d3; }
 
         .reveal .arch-diagram {
             display: flex;
@@ -266,7 +279,7 @@
             height: 1.5em;
             border-radius: 50%;
             background: var(--primary);
-            color: #212529;
+            color: #696663;
             font-size: 0.8em;
             font-weight: 700;
             flex-shrink: 0;
@@ -282,7 +295,7 @@
         .stat-red .number { color: var(--danger); }
 
         /* ---------- Slides brilhantes (1 a 10) ---------- */
-        .reveal .bright h2 { text-shadow: 0 0 22px rgba(173, 181, 189, 0.35); }
+        .reveal .bright h2 { text-shadow: 0 0 22px rgba(185,179,175,0.35); }
         .reveal .bright .lead { color: var(--text-muted); }
         .reveal .bright p, .reveal .bright li, .reveal .bright td { color: var(--text); }
         .reveal .bright .feature-card {
@@ -311,7 +324,7 @@
         .reveal .bright .route-table td,
         .reveal .bright .model-table td { border-bottom-color: var(--card-border); }
 
-        .reveal h1, .reveal h2 { text-shadow: 0 2px 16px rgba(108, 117, 125, 0.22); }
+        .reveal h1, .reveal h2 { text-shadow: 0 2px 16px rgba(139,135,132,0.22); }
         .reveal .progress { background: var(--primary); height: 3px; }
         .reveal .slide-number { background: rgba(0,0,0,0.3); color: var(--primary); border-radius: 6px; padding: 0 0.3em; }
 
@@ -351,7 +364,7 @@
         .reveal .arch-box:hover,
         .theme-toggle:hover {
             border-color: var(--gold-border);
-            box-shadow: var(--gold-glow), 0 18px 36px rgba(33, 37, 41, 0.22);
+            box-shadow: var(--gold-glow), 0 18px 36px rgba(105,102,99,0.22);
         }
 
         .reveal .feature-card,
@@ -362,8 +375,8 @@
         .reveal .bright .arch-box,
         .reveal .code-block,
         .theme-toggle {
-            border-color: rgba(108, 117, 125, 0.38);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 0 18px rgba(173, 181, 189, 0.22), 0 10px 24px rgba(33, 37, 41, 0.12);
+            border-color: rgba(139,135,132,0.38);
+            box-shadow: inset 0 1px 0 rgba(245,239,232,0.72), 0 0 18px rgba(185,179,175,0.22), 0 10px 24px rgba(105,102,99,0.12);
         }
 
         [data-theme="dark"] .reveal .feature-card,
@@ -374,8 +387,8 @@
         [data-theme="dark"] .reveal .bright .arch-box,
         [data-theme="dark"] .reveal .code-block,
         [data-theme="dark"] .theme-toggle {
-            border-color: rgba(233, 236, 239, 0.38);
-            box-shadow: inset 0 1px 0 rgba(248, 249, 250, 0.14), 0 0 22px rgba(206, 212, 218, 0.18), 0 14px 28px rgba(0, 0, 0, 0.32);
+            border-color: rgba(223,217,211,0.38);
+            box-shadow: inset 0 1px 0 rgba(245,239,232,0.14), 0 0 22px rgba(203,197,192,0.18), 0 14px 28px rgba(0,0,0,0.32);
         }
 
         .reveal .feature-card:hover,
@@ -386,8 +399,8 @@
         .reveal .bright .arch-box:hover,
         .reveal .code-block:hover,
         .theme-toggle:hover {
-            border-color: rgba(108, 117, 125, 0.78);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 0 0 2px rgba(173, 181, 189, 0.34), 0 0 28px rgba(173, 181, 189, 0.46), 0 18px 42px rgba(33, 37, 41, 0.2);
+            border-color: rgba(139,135,132,0.78);
+            box-shadow: inset 0 1px 0 rgba(245,239,232,0.96), 0 0 0 2px rgba(185,179,175,0.34), 0 0 28px rgba(185,179,175,0.46), 0 18px 42px rgba(105,102,99,0.2);
         }
 
         [data-theme="dark"] .reveal .feature-card:hover,
@@ -398,8 +411,8 @@
         [data-theme="dark"] .reveal .bright .arch-box:hover,
         [data-theme="dark"] .reveal .code-block:hover,
         [data-theme="dark"] .theme-toggle:hover {
-            border-color: rgba(248, 249, 250, 0.74);
-            box-shadow: inset 0 1px 0 rgba(248, 249, 250, 0.28), 0 0 0 2px rgba(206, 212, 218, 0.3), 0 0 32px rgba(206, 212, 218, 0.34), 0 20px 44px rgba(0, 0, 0, 0.48);
+            border-color: rgba(245,239,232,0.74);
+            box-shadow: inset 0 1px 0 rgba(245,239,232,0.28), 0 0 0 2px rgba(203,197,192,0.3), 0 0 32px rgba(203,197,192,0.34), 0 20px 44px rgba(0,0,0,0.48);
         }
     </style>
 </head>
@@ -419,9 +432,9 @@
             <!-- 1. Capa -->
             <section class="bright" data-background-gradient="var(--cover-bg)">
                 <div style="display:flex; justify-content:center; margin-bottom: 0.4em;">
-                    <img src="static/task-manager-logo.png?v=26" alt="Task Manager" style="height:108px; width:auto; object-fit:contain;">
+                    <img src="static/task-manager-logo.png?v=28" alt="Task Manager" style="height:108px; width:auto; object-fit:contain;">
                 </div>
-                <h1 style="text-align:center; font-size:2.4em; background:linear-gradient(135deg,#343a40,#6c757d,#adb5bd); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Task Manager</h1>
+                <h1 style="text-align:center; font-size:2.4em; background:linear-gradient(135deg,#696663,#8b8784,#b9b3af); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Task Manager</h1>
                 <p class="subtitle" style="font-size:0.72em; text-align:center;">Sistema Web de Gerenciamento de Tarefas</p>
                 <p class="subtitle" style="margin-top: 1.4em; text-align:center;">
                     <span class="badge badge-python">Python</span>
@@ -689,7 +702,7 @@
             <!-- 10. Obrigado -->
             <section class="bright" data-background-gradient="var(--slide-bg)">
                 <div style="display:flex; justify-content:center; margin-bottom: 0.3em;">
-                    <img src="static/task-manager-logo.png?v=26" alt="Task Manager" style="height:84px; width:auto; object-fit:contain;">
+                    <img src="static/task-manager-logo.png?v=28" alt="Task Manager" style="height:84px; width:auto; object-fit:contain;">
                 </div>
                 <h1>Obrigado!</h1>
                 <p class="subtitle" style="margin-top: 0.8em; font-size: 0.7em;">Dúvidas?</p>
