@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Task Manager{% endblock %}</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=28">
-    <link rel="apple-touch-icon" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=28">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=31">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='task-manager-logo.png') }}?v=31">
     <script>
         (function () {
             var saved = localStorage.getItem('theme');
@@ -19,7 +19,7 @@
             }
         })();
     </script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=28">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=31">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -27,7 +27,7 @@
     {% set is_login = request.endpoint == 'login' %}
     {% macro brand_mark() %}
     <span class="brand-mark">
-        <img src="{{ url_for('static', filename='task-manager-logo.png') }}?v=28" alt="" aria-hidden="true">
+        <img src="{{ url_for('static', filename='task-manager-logo.png') }}?v=31" alt="" aria-hidden="true">
     </span>
     {% endmacro %}
 
